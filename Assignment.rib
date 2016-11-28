@@ -1,0 +1,45 @@
+#Assignment.rib
+Format 1080 720 1.0
+
+Display "Assignment.tiff" "framebuffer" "rgb"
+Projection "perspective"
+
+Translate 0 0 25
+Translate 0 -3 0
+
+
+WorldBegin
+
+                Rotate -90 1 0 0
+                #Body
+                TransformBegin
+                        Translate 0 -1 1.7
+                        Scale 1.7 0.6 1.35468457
+                        # Top
+                        Sphere 4 0 3.2 360
+                TransformEnd 
+
+                TransformBegin
+                        Translate 0 0 1.8
+                        Scale 1 1 1.07
+                        Translate 0 1.2 0
+                        #Bottom 
+                        Sphere 6 -5 0 360
+                TransformEnd
+
+                Bxdf "PxrDisney" "forTheNeck" "color baseColor" [ 0.0 0.255 0.255] "float metallic" [1]
+                TransformBegin
+                        #Neck
+                        Translate 0 0 7
+                        Scale 2 2 1
+                        Cylinder 1 -1 1 360
+                        TransformEnd 
+
+                TransformBegin
+                        #Top
+                        Translate 0 0 10
+                        Scale 2.6 2.6 2.6
+                        Sphere 1 -1 1 360
+                TransformEnd
+
+WorldEnd

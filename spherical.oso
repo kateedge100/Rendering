@@ -1,0 +1,42 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.6.2dev
+surface spherical
+param	color	Cin1	0.69999999 0.69999999 0.69999999		%read{8,8} %write{2147483647,-1}
+param	color	Cin2	0.44999999 0 0.043000001		%read{8,8} %write{2147483647,-1}
+oparam	color	Cout	0 0 0		%read{2147483647,-1} %write{8,8}
+global	point	P	%read{1,1} %write{2147483647,-1}
+local	point	PP	%read{2,2} %write{1,1}
+local	vector	d	%read{3,3} %write{2,2}
+local	float	t	%read{8,8} %write{7,7}
+const	string	$const1	"shader"		%read{1,1} %write{2147483647,-1}
+const	string	$const2	"transform"		%read{0,0} %write{2147483647,-1}
+const	string	$const3	"common"		%read{1,1} %write{2147483647,-1}
+temp	float	$tmp1	%read{6,6} %write{4,4}
+const	int	$const4	2		%read{3,3} %write{2147483647,-1}
+temp	float	$tmp2	%read{4,4} %write{3,3}
+const	float	$const5	3.1415927		%read{5,5} %write{2147483647,-1}
+temp	float	$tmp3	%read{6,6} %write{5,5}
+const	float	$const6	2		%read{5,5} %write{2147483647,-1}
+temp	float	$tmp4	%read{7,7} %write{6,6}
+const	float	$const7	0.60000002		%read{7,7} %write{2147483647,-1}
+code ___main___
+# spherical.osl:7
+#     point PP=transform("shader",P);
+	functioncall	$const2 2 	%filename{"spherical.osl"} %line{7} %argrw{"r"}
+# /opt/pixar/RenderManProServer-20.10/lib/osl/include/stdosl.h:243
+# vector transform (matrix Mto, vector p) BUILTIN;
+	transform	PP $const3 $const1 P 	%filename{"/opt/pixar/RenderManProServer-20.10/lib/osl/include/stdosl.h"} %line{243} %argrw{"wrrr"}
+# spherical.osl:8
+#     vector d=normalize(PP);
+	normalize	d PP 	%filename{"spherical.osl"} %line{8} %argrw{"wr"}
+# spherical.osl:9
+#     float t=acos(d[2])/(M_PI/2)-0.6;
+	compref		$tmp2 d $const4 	%line{9} %argrw{"wrr"}
+	acos		$tmp1 $tmp2 	%argrw{"wr"}
+	div		$tmp3 $const5 $const6 	%argrw{"wrr"}
+	div		$tmp4 $tmp1 $tmp3 	%argrw{"wrr"}
+	sub		t $tmp4 $const7 	%argrw{"wrr"}
+# spherical.osl:10
+#     Cout=(color)mix(Cin2,Cin1,t);
+	mix		Cout Cin2 Cin1 t 	%line{10} %argrw{"wrrr"}
+	end

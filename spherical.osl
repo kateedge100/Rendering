@@ -1,0 +1,12 @@
+surface spherical (
+        color Cin1 = color(0.7,0.7,0.7),
+        color Cin2 = color (0.45,0,0.043),
+output  color Cout=0
+)
+{
+    point PP=transform("shader",P);
+    vector d=normalize(PP);
+    float t=acos(d[2])/(M_PI/2)-0.6;
+    Cout=(color)mix(Cin2,Cin1,t);
+}
+

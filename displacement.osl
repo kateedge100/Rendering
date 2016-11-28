@@ -1,0 +1,16 @@
+shader leafRidge (
+    float repeatCount=5,
+output	float resultF=0
+)
+{
+    
+
+    point PP=transform("object",P);
+
+     P[1]=-((P[0])*(P[0]));
+     resultF=P[1];
+
+     //resultF=((P[0])*(P[0]))-5;
+    
+}
+

@@ -1,0 +1,23 @@
+    #Test.rib
+Format 1080 720 1.0
+
+Display "Test.tiff" "framebuffer" "rgb"
+Projection "perspective"
+WorldBegin
+    
+    
+    AttributeBegin
+                Rotate -90 1 0 0
+                TransformBegin
+                        Translate 0 0 1.7
+                        Scale 1 1 1.05468457
+                        Sphere 5 0 3.12897569 360
+                TransformEnd
+                TransformBegin
+                        Translate 0 0 1.7
+                        Scale 1 1 0.463713017
+                        Sphere 5 -3.66606055 0 360
+                TransformEnd
+        AttributeEnd
+
+  WorldEnd

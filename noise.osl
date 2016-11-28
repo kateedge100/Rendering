@@ -1,0 +1,11 @@
+shader noise(
+  color Cin=1,
+output color Cout=1
+)
+{
+ // Edit to add white dust marks
+  Cout=(float)noise("uperlin",u*10,v*10);
+
+
+}
+

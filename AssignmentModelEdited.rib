@@ -1,0 +1,114 @@
+#Assignment.rib
+Format 1080 720 1.0
+
+Display "Assignment.tiff" "framebuffer" "rgb"
+Projection "perspective" "fov" [50]
+
+
+
+
+WorldBegin
+                AttributeBegin
+
+ 
+               
+                
+
+
+                Translate 0 0 25
+                Translate 0 -3 0
+
+                TransformBegin
+                        #Translate 0 0 5
+                        # a sphere that emits light
+                        #Translate -2 2 2
+                        Scale 600 600 600
+                        Sphere 0.1 -0.1 0.1 360
+                TransformEnd
+
+                
+
+                TransformBegin
+                        #Floor
+                        Patch "bilinear" "P" [-15 -4 10 15 -4 10 -15 -4 -10 15 -4 -10]
+                TransformEnd
+
+                TransformBegin
+                #Leaf1
+                        Translate -1.6 3.6 -15
+                        Rotate 90 1 0 0
+                        Scale 2 1 1
+                        Rotate 40 0 1 0
+                        Rotate 10 1 0 0
+                        Sphere 1 -0.4 -1 360
+                TransformEnd
+
+                TransformBegin
+                #Leaf2
+                        Translate 0.5 3 -15
+                        Rotate 90 1 0 0
+                        Scale 0.8 0.4 1.5
+                        
+                        Rotate -140 0 1 1
+                        #Rotate 90 0 0 1
+                        Sphere 1 -0.4 -1 360
+                TransformEnd
+
+                TransformBegin
+                #Leaf3
+                        Translate 0.8 3 -15
+                        Rotate 90 1 0 0
+                        Scale 0.8 0.4 1.5
+                        Rotate -140 0 1 1
+                        Rotate 40 0 1 0
+                        Rotate -50 1 0 0
+                        #Sphere 1 -0.4 -1 360
+                TransformEnd
+
+
+                Rotate -90 1 0 0
+                #Body
+                TransformBegin
+                        Translate 0 -1 1.7
+                        Scale 1.7 1 1.35468457
+                        #Top
+                        Sphere 4 0 3.2 360
+                TransformEnd 
+
+                TransformBegin
+                        Translate 0 -1 1.7
+                        Scale 1.7 1 1.9                       
+                        #Bottom 
+                        #Sphere 4 -5 0 360
+                TransformEnd
+
+                TransformBegin
+                        Translate 0 -1 -4.7
+                        Scale 1.7 1 1.35468457
+                        Scale 0.73 0.73 0.25
+                        #Bottom Curve
+                        Sphere 4 0 5 360
+                TransformEnd
+
+
+                
+                TransformBegin
+                        #Neck
+                        Translate 0 0 7
+                        Scale 2 2 1
+                        Cylinder 1 -1 1 360
+                TransformEnd 
+
+                TransformBegin
+                        #Top
+                        Translate 0 0 10
+                        Scale 2.6 2.6 2.6
+                        Sphere 1 -1 1 360
+                TransformEnd
+
+                AttributeEnd
+
+              
+
+
+WorldEnd
